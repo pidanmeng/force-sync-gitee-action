@@ -22,4 +22,4 @@ function _interopNamespaceDefault(e) {
 var core__namespace = /*#__PURE__*/_interopNamespaceDefault(core);
 
 const username = core__namespace.getInput('username');
-console.log(`[force-sync-gitee-action]: Your username is ${username}`);
+core__namespace.info(`[force-sync-gitee-action]: Your username is ${username}`);
