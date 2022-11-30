@@ -22,8 +22,10 @@
     "husky": "^8.0.2",
     "rollup": "^3.4.0"
   },
-  "hooks": {
-    "pre-commit": "pnpm lint",
-    "pre-push": "pnpm commit::release"
+  "husky": {
+    "hooks": {
+      "pre-commit": "pnpm lint",
+      "pre-push": "pnpm commit::release"
+    }
   }
 }
