@@ -2,32 +2,24 @@
   "name": "force-sync-gitee-action",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "type": "module",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c --environment NODE_ENV:development && node ./dist/index.js",
+    "build": "tsc && ncc build -m",
+    "dev": "tsc && node lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint . --fix",
-    "prepare": "husky install"
+    "lint": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.11.9",
-    "eslint": "^8.28.0",
-    "husky": "^8.0.2",
-    "rollup": "^3.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pnpm lint"
-    }
+    "@vercel/ncc": "^0.34.0",
+    "eslint": "^8.28.0"
   },
   "dependencies": {
-    "@actions/core": "^1.10.0"
+    "@actions/core": "^1.10.0",
+    "force-sync-gitee-action": "link:"
   }
 }
