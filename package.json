@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "rollup -c --environment NODE_ENV:production",
+    "build": "tsc",
     "dev": "rollup -c --environment NODE_ENV:development && node ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit::release": "pnpm build && git add ./dist && git commit -m \"feat: upload release\"",
