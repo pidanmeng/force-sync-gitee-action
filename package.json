@@ -1,0 +1,25 @@
+{
+  "name": "force-sync-gitee-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c --environment NODE_ENV:production",
+    "dev": "rollup -c --environment NODE_ENV:development && node ./dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "husky": "^8.0.2",
+    "rollup": "^3.4.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pnpm build"
+    }
+  }
+}

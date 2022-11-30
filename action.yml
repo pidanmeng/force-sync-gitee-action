@@ -1,0 +1,18 @@
+name: 'Force sync gitee codebase'
+description: '强制同步gitee仓库'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+branding:
+  icon: refresh-cw
+  color: red
+inputs:
+  username:
+    description: '用户名'
+    required: true
+  password:
+    description: '密码'
+    required: true
+  repository:
+    description: '仓库名'
+    required: true
