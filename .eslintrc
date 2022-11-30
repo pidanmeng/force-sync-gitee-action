@@ -4,9 +4,6 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "jest"
-  ],
   "rules": {
     "linebreak-style": [
       "error",
