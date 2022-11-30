@@ -8,17 +8,22 @@
     "build": "rollup -c --environment NODE_ENV:production",
     "dev": "rollup -c --environment NODE_ENV:development && node ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "commit::release": "pnpm build && git add ./dist && git commit -m \"feat: upload release\""
+    "commit::release": "pnpm build && git add ./dist && git commit -m \"feat: upload release\"",
+    "lint": "eslint . --fix",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.11.9",
-    "pre-push": "^0.1.4",
+    "eslint": "^8.28.0",
+    "eslint-plugin-jest": "^27.1.6",
+    "husky": "^8.0.2",
     "rollup": "^3.4.0"
   },
-  "pre-push": [
-    "commit::release"
-  ]
+  "hooks": {
+    "pre-commit": "pnpm lint",
+    "pre-push": "pnpm commit::release"
+  }
 }
