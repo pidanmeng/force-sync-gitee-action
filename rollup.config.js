@@ -1,10 +1,13 @@
-const isProd = process.env.NODE_ENV === 'production'
-
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 export default {
   input: 'src/index.ts',
-  intro: `var DEVELOPMENT = ${!isProd}`,
   output: {
     file: 'dist/index.js',
     format: 'cjs'
-  }
+  },
+  plugins: [
+    resolve(),
+    commonjs()
+  ]
 };
