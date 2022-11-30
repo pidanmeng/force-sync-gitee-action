@@ -22,7 +22,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pnpm lint",
+      "pre-commit": "pnpm lint"
     }
   },
   "dependencies": {
