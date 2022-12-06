@@ -61,16 +61,19 @@ let browser: any;
 
   core.info('点击同步');
   await page.click(SELECTOR.REPO);
+  await sleep(2000)
   await debugScreenshot(page, 'step5.png');
 
   core.info('确认同步');
   const confirm = await page.evaluateHandle(() =>
-    document.querySelector(SELECTOR.SYNC)
+    document.querySelector('#modal-sync-from-github > .actions > .ok')
   );
   confirm.click();
+  await sleep(2000)
   await debugScreenshot(page, 'step6.png');
 
   core.info('done!');
+  browser.close();
 
   return;
 })().catch((error) => {
