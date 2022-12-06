@@ -3,11 +3,12 @@ import * as env from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
+import { actionInputs } from './constant';
 
 function getEnv() {
   const { parsed, error } = env.config();
   if (error) {
-    core.error(`parse params error: ${error}`);
+    core.info('[从线上环境获取流水线入参]')
     return {};
   }
   if (!parsed) {
@@ -30,11 +31,7 @@ interface InputDefinition {
 }
 
 function loadActionConfig(): Record<string, InputDefinition> {
-  const config = yaml.load(
-    fs.readFileSync(path.resolve('action.yml'), 'utf-8')
-  ) as Record<string, any>;
-
-  const inputs = Reflect.get(config, 'inputs');
+  const inputs = actionInputs;
   if (!inputs) {
     core.error('读取action.yml失败');
     return {};
