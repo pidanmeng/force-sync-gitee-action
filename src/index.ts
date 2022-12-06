@@ -61,14 +61,16 @@ let browser: any;
 
   core.info('点击同步');
   await page.click(SELECTOR.REPO);
-  await ensureElementLoaded(page, SELECTOR.SYNC);
   await debugScreenshot(page, 'step5.png');
 
   core.info('确认同步');
-  await page.click(SELECTOR.SYNC);
+  const confirm = await page.evaluateHandle(() =>
+    document.querySelector(SELECTOR.SYNC)
+  );
+  confirm.click();
+  await debugScreenshot(page, 'step6.png');
 
   core.info('done!');
-  await browser.close();
 
   return;
 })().catch((error) => {
