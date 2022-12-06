@@ -28,7 +28,9 @@ let browser: any;
   core.info('开始下载浏览器');
   await downloadBrowser();
   core.info('浏览器下载完成');
-  browser = await launch({ headless: true });
+  browser = await launch({
+    args: ['--lang=zh-CN'],
+  });
 
   core.info('准备登录');
   const page = await browser.newPage();
