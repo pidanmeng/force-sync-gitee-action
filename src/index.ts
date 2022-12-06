@@ -14,7 +14,7 @@ import {
 } from './utils/tools';
 import { SELECTOR } from './constant';
 
-const browser = await launch({ headless: true });
+let browser: any;
 (async () => {
   // 入参检查
   if (!checkInputsValid()) {
@@ -24,6 +24,8 @@ const browser = await launch({ headless: true });
     await io.mkdirP(screenShotPath);
     core.info('创建截图目录');
   }
+
+  browser = await launch({ headless: true });
 
   core.info('准备登录');
   const page = await browser.newPage();
