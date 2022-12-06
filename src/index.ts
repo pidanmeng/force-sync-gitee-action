@@ -2,7 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import * as core from '@actions/core';
 import * as io from '@actions/io';
-import { Page, launch } from 'puppeteer';
+import { launch } from 'puppeteer';
+import { downloadBrowser } from 'puppeteer/lib/cjs/puppeteer/node/install';
 import inputs, { checkInputsValid } from './utils/io';
 import {
   debugScreenshot,
@@ -24,7 +25,9 @@ let browser: any;
     await io.mkdirP(screenShotPath);
     core.info('创建截图目录');
   }
-
+  core.info('开始下载浏览器');
+  await downloadBrowser();
+  core.info('浏览器下载完成');
   browser = await launch({ headless: true });
 
   core.info('准备登录');
